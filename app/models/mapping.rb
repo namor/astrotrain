@@ -101,6 +101,9 @@ class Mapping
 
   def find_reply_from(body)
     return if separator.blank?
+    
+    body.gsub!(/<\/?[^>]*>/, "")
+    
     lines = body.split("\n")
     delim_line = last_line = found_empty = nil
     
